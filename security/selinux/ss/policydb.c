@@ -1377,6 +1377,7 @@ static int class_read(struct policydb *p, struct hashtab *h, void *fp)
 
 	if (p->policyvers >= POLICYDB_VERSION_NEW_OBJECT_DEFAULTS) {
 		rc = next_entry(buf, fp, sizeof(u32) * 3);
+<<<<<<< HEAD
 		if (rc)
 			goto bad;
 
@@ -1389,6 +1390,20 @@ static int class_read(struct policydb *p, struct hashtab *h, void *fp)
 		rc = next_entry(buf, fp, sizeof(u32) * 1);
 		if (rc)
 			goto bad;
+=======
+		if (rc)
+			goto bad;
+
+		cladatum->default_user = le32_to_cpu(buf[0]);
+		cladatum->default_role = le32_to_cpu(buf[1]);
+		cladatum->default_range = le32_to_cpu(buf[2]);
+	}
+
+	if (p->policyvers >= POLICYDB_VERSION_DEFAULT_TYPE) {
+		rc = next_entry(buf, fp, sizeof(u32) * 1);
+		if (rc)
+			goto bad;
+>>>>>>> 7bfb48d... Selinux: Update selinux for cm-13
 		cladatum->default_type = le32_to_cpu(buf[0]);
 	}
 

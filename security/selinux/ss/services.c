@@ -1404,7 +1404,11 @@ static int security_context_to_sid_core(const char *scontext, u32 scontext_len,
 	int rc = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* An empty security context is never valid. */
+=======
+	/* An empty security context is never valied. */
+>>>>>>> 7bfb48d... Selinux: Update selinux for cm-13
 =======
 	/* An empty security context is never valied. */
 >>>>>>> 7bfb48d... Selinux: Update selinux for cm-13
