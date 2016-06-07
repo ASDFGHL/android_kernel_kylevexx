@@ -79,6 +79,7 @@ int intel_connector_update_modes(struct drm_connector *connector,
 }
 
 /**
+<<<<<<< HEAD
  * intel_connector_update_modes - update connector from edid
  * @connector: DRM connector device to use
  * @edid: previously read EDID information
@@ -98,6 +99,8 @@ int intel_connector_update_modes(struct drm_connector *connector,
 }
 
 /**
+=======
+>>>>>>> f0b150e... Update gpu/ drivers
  * intel_ddc_get_modes - get modelist from monitor
  * @connector: DRM connector device to use
  * @adapter: i2c adapter

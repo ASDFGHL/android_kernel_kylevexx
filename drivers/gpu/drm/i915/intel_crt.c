@@ -309,7 +309,7 @@ static bool intel_crt_detect_ddc(struct drm_connector *connector)
 		struct edid *edid;
 		bool is_digital = false;
 
-		edid = drm_get_edid(connector,
+		edid = intel_crt_get_edid(connector,
 			&dev_priv->gmbus[dev_priv->crt_ddc_pin].adapter);
 		/*
 		 * This may be a DVI-I connector with a shared DDC
@@ -507,13 +507,13 @@ static int intel_crt_get_modes(struct drm_connector *connector)
 	struct drm_i915_private *dev_priv = dev->dev_private;
 	int ret;
 
-	ret = intel_ddc_get_modes(connector,
+	ret = intel_crt_ddc_get_modes(connector,
 				 &dev_priv->gmbus[dev_priv->crt_ddc_pin].adapter);
 	if (ret || !IS_G4X(dev))
 		return ret;
 
 	/* Try to probe digital port for output in DVI-I -> VGA mode. */
-	return intel_ddc_get_modes(connector,
+	return intel_crt_ddc_get_modes(connector,
 				   &dev_priv->gmbus[GMBUS_PORT_DPB].adapter);
 }
 

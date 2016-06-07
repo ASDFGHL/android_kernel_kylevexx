@@ -9201,6 +9201,7 @@ static void quirk_no_pcm_pwm_enable(struct drm_device *dev)
 	DRM_INFO("applying no-PCH_PWM_ENABLE quirk\n");
 }
 
+<<<<<<< HEAD
 /*
  * A machine (e.g. Acer Aspire 5734Z) may need to invert the panel backlight
  * brightness value
@@ -9211,6 +9212,8 @@ static void quirk_invert_brightness(struct drm_device *dev)
 	dev_priv->quirks |= QUIRK_INVERT_BRIGHTNESS;
 }
 
+=======
+>>>>>>> f0b150e... Update gpu/ drivers
 struct intel_quirk {
 	int device;
 	int subsystem_vendor;
@@ -9272,6 +9275,7 @@ struct intel_quirk intel_quirks[] = {
 	/* Sony Vaio Y cannot use SSC on LVDS */
 	{ 0x0046, 0x104d, 0x9076, quirk_ssc_force_disable },
 
+<<<<<<< HEAD
 	/* Acer Aspire 5734Z must invert backlight brightness */
 	{ 0x2a42, 0x1025, 0x0459, quirk_invert_brightness },
 
@@ -9284,6 +9288,8 @@ struct intel_quirk intel_quirks[] = {
 	/* Acer/Packard Bell NCL20 */
 	{ 0x2a42, 0x1025, 0x034b, quirk_invert_brightness },
 
+=======
+>>>>>>> f0b150e... Update gpu/ drivers
 	/* Dell XPS13 HD Sandy Bridge */
 	{ 0x0116, 0x1028, 0x052e, quirk_no_pcm_pwm_enable },
 	/* Dell XPS13 HD and XPS13 FHD Ivy Bridge */

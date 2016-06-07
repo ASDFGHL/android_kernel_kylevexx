@@ -169,6 +169,7 @@ static bool radeon_atrm_get_bios(struct radeon_device *rdev)
 		dhandle = DEVICE_ACPI_HANDLE(&pdev->dev);
 		if (!dhandle)
 			continue;
+<<<<<<< HEAD
 
 		status = acpi_get_handle(dhandle, "ATRM", &atrm_handle);
 		if (!ACPI_FAILURE(status)) {
@@ -177,6 +178,16 @@ static bool radeon_atrm_get_bios(struct radeon_device *rdev)
 		}
 	}
 
+=======
+
+		status = acpi_get_handle(dhandle, "ATRM", &atrm_handle);
+		if (!ACPI_FAILURE(status)) {
+			found = true;
+			break;
+		}
+	}
+
+>>>>>>> f0b150e... Update gpu/ drivers
 	if (!found)
 		return false;
 
