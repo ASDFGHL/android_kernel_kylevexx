@@ -1174,10 +1174,14 @@ SYSCALL_DEFINE6(mmap_pgoff, unsigned long, addr, unsigned long, len,
 		 * A dummy user value is used because we are not locking
 		 * memory so no accounting is necessary
 		 */
+<<<<<<< HEAD
 		file = hugetlb_file_setup(HUGETLB_ANON_FILE, len,
+=======
+/*		file = hugetlb_file_setup(HUGETLB_ANON_FILE, addr, len,
+>>>>>>> 13ef300... Display: Update lcd drivers
 						VM_NORESERVE, &user,
 						HUGETLB_ANONHUGE_INODE);
-		if (IS_ERR(file))
+*/		if (IS_ERR(file))
 			return PTR_ERR(file);
 	}
 
