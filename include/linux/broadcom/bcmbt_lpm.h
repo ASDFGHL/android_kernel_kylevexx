@@ -1,9 +1,9 @@
- #define __ASM_BCMBT_LPM_H
+#define __ASM_BCMBT_LPM_H
 
- #include <linux/serial_core.h>
+#include <linux/serial_core.h>
 #include <linux/tty.h>
 #ifdef CONFIG_HAS_WAKELOCK
- #include <linux/wakelock.h>
+#include <linux/wakelock.h>
 #endif
 #ifdef CONFIG_KONA_PI_MGR
 #include <mach/pi_mgr.h>
@@ -19,8 +19,10 @@
 #define BCMBT_LPM_CLOCK_ENABLE 1
 #define BCMBT_LPM_CLOCK_DISABLE 0
 
+#define BCMBT_LPM_BT_WAKE_DEFAULT 0
+
 #ifndef BCMBT_LPM_BT_WAKE_ASSERT
-#define BCMBT_LPM_BT_WAKE_ASSERT 0
+#define BCMBT_LPM_BT_WAKE_ASSERT 1
 #endif
 
 #ifndef BCMBT_LPM_BT_WAKE_DEASSERT
@@ -28,7 +30,7 @@
 #endif
 
 #ifndef BCMBT_LPM_HOST_WAKE_ASSERT
-#define BCMBT_LPM_HOST_WAKE_ASSERT 0
+#define BCMBT_LPM_HOST_WAKE_ASSERT 1
 #endif
 #ifndef BCMBT_LPM_HOST_WAKE_DEASSERT
 #define BCMBT_LPM_HOST_WAKE_DEASSERT (!(BCMBT_LPM_HOST_WAKE_ASSERT))
@@ -41,6 +43,11 @@
 #define TIO_GET_BT_UART_PORT	0x8006
 #define TIO_GET_BT_FIRMWARE	0x8007
 
+enum {
+	IDLE,
+	ACTIVE,
+	NO_STATE
+};
 struct bcmbt_lpm_struct {
 #ifdef CONFIG_HAS_WAKELOCK
 	struct wake_lock bt_wake_lock;
@@ -50,6 +57,7 @@ struct bcmbt_lpm_struct {
 	struct pi_mgr_qos_node host_wake_qos_node;
 	spinlock_t bcmbt_lpm_lock;
 	struct timer_list hw_timer;
+	uint8_t hw_timer_st;
 	struct uart_port *uport;
 	int host_irq;
 };
