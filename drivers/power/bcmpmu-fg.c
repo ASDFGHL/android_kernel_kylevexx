@@ -3905,4 +3905,3 @@ module_exit(bcmpmu_fg_exit);
 
 MODULE_DESCRIPTION("Broadcom PMU Fuel Gauge Driver");
 MODULE_LICENSE("GPL");
-
